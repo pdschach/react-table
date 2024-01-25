@@ -1,0 +1,10 @@
+.footercontainer {
+    text-align: center;
+    background-color: #333; /* Set your desired background color */
+    color: #fff; /* Set your desired text color */
+    padding: 10px; /* Adjust the padding as needed */
+  }
+  .footertext {
+    margin: 0; /* Remove default margin to ensure proper centering */
+  }
+  

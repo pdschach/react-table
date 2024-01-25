@@ -1,39 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UserRow from "./userRow";
 
-
-const usersArray = [
-  {
-    id: 1,
-    Naam: "Jos",
-    Voornaam: "Cross",
-    email: "Jos.Cross@test.be",
-    Obasinaam: "joscross",
-    status: false
-  },
-  {
-    id: 2,
-    Naam: "Pol",
-    Voornaam: "Hol",
-    email: "Pol.Hol@telenet.be",
-    Obasinaam: "polhol",
-    status: true
-  },
-];
 
 
 
 const UserList = () => {
-    const [users, setUsers] = useState(usersArray);
-    const [counter, setCounter] = useState(0); 
-    
-    const buttonClicked = () => setCounter(counter + 1);
+    const [users, setUsers] = useState([]);
+    const [isShaking, setShaking] = useState(false);
+
+
+    useEffect(() => {
+      const fetchUsers = async () => {
+      const response = await fetch("/api/users"); 
+      const users = await response.json();
+      setUsers(users);
+    };
+    fetchUsers();
+    }, []);
+
+  
 
     const addUser = () => {
       setUsers([
         ...users,
         {
-          id: 3,
+          id: 5,
           Naam: "John",
           Voornaam: "Revak",
           email: "John.Revak@telenet.be",
@@ -45,13 +36,13 @@ const UserList = () => {
 
     return (
             <>
-            {counter}
-              <div className="row mb-2">
-                <h5 className="themeFontColor text-center">
+           
+              <div className="">
+                <h5 className="themeFontColor text-center ">
                  users
                 </h5>
               </div>
-              <table className="table table-hover">
+              <table className="table table-hover ">
                 <thead>
                   <tr>
                     <th>Naam</th>
@@ -65,6 +56,7 @@ const UserList = () => {
                 (<UserRow key={u.id} user={u} />))}
             </tbody>
               </table>
+              {/* <button className="btn btn-primary" onClick={addUser}> */}
               <button className="btn btn-primary" onClick={addUser}>
                 Add
               </button>

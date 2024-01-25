@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "Naam": "John",
+      "Voornaam": "Revak",
+      "email": "John.Revak@telenet.be",
+      "Obasinaam": "johnrevak",
+      "status": false
+    },
+    {
+      "id": 2,
+      "Naam": "John",
+      "Voornaam": "Revak",
+      "email": "John.Revak@telenet.be",
+      "Obasinaam": "johnrevak",
+      "status": false
+    },
+    {
+      "id": 3,
+      "Naam": "John",
+      "Voornaam": "Revak",
+      "email": "John.Revak@telenet.be",
+      "Obasinaam": "johnrevak",
+      "status": false
+    },
+    {
+      "id": 4,
+      "Naam": "John",
+      "Voornaam": "Revak",
+      "email": "John.Revak@telenet.be",
+      "Obasinaam": "johnrevak",
+      "status": false
+    }
+  ]
+}
