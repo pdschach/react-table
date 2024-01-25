@@ -57,8 +57,8 @@ const UserList = () => {
             </tbody>
               </table>
               {/* <button className="btn btn-primary" onClick={addUser}> */}
-              <button className="btn btn-primary" onClick={addUser}>
-                Add
+              <button className="btn btn-primary " onClick={addUser}>
+              X
               </button>
             </> 
     );

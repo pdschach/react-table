@@ -1,4 +1,5 @@
 import obasify from "@/helpers/obasiFormatter";
+import Board from "./board";
 
 const UserRow = ({user}) => {
     return (
@@ -7,8 +8,10 @@ const UserRow = ({user}) => {
         <td>{user.Voornaam}</td>
         <td>{user.email}</td>
         <td>{obasify(user.Obasinaam)}</td>
-        <td>{user.afgewerkt}</td>  
+        <td><Board></Board></td>
       
+        <td>{user.afgewerkt}</td>  
+       
     </tr>
     );
 };
