@@ -1,5 +1,9 @@
+import About from "./about";
 import Banner from "./banner";
 import UserList from "./userList";
+
+
+
 
 const App = () => {
     return (
@@ -8,10 +12,11 @@ const App = () => {
     </Banner> 
     <UserList>
     </UserList>
+    <About></About>
     </>
     )
 };
 
 export default App;
 
-//coment test
+//comment test
