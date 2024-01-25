@@ -4,6 +4,7 @@ import { useState } from "react";
 const Board = () => {
   const [squares, setSquares] = useState(Array(9).fill(null));
 
+
   const handleClick = (i) => {
     const nextSquares = squares.slice();
     nextSquares[i] = "X";
