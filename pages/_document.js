@@ -9,9 +9,9 @@ export default function Document() {
       <link rel="stylesheet" href="css/globals.css" />
       </Head> 
       <body>
-        <div className="container">
+        {/* <div className="container"> */}
         <Main />
-        </div>
+        {/* </div> */}
         <NextScript />
       </body>
     </Html>

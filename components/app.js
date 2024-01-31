@@ -10,12 +10,11 @@ import UserList from "./userList";
 const App = () => {
     return (
     <>
-    <Banner><div>Userkeep</div>  
+    <Banner><div>interneolist</div>  
     </Banner> 
     <UserList>
     </UserList>
     <About></About>
-    <Board></Board>
     </>
     )
 };
