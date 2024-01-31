@@ -1,3 +1,4 @@
+import { BasicTable } from "./BasicTable";
 import About from "./about";
 import Banner from "./banner";
 import Board from "./board";
@@ -9,12 +10,13 @@ import UserListFilters from "./userListFilters";
 
 
 
+
 const App = () => {
 
     return (
     <>
     <Banner>interneolist</Banner> 
-    <UserListFilters/>
+    <BasicTable></BasicTable>
     <About></About>
     </>
     )

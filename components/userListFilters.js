@@ -65,7 +65,7 @@ const UserListFilters = () => {
             <th>Familienaam</th>
             <th>Email</th>
             <th>Afdeling</th>
-            <th>Oppleiding</th>
+            <th>Opleiding</th>
             <th>Start</th>
             <th>Eind</th>
             <th>Account</th>
