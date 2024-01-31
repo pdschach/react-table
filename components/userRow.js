@@ -2,14 +2,26 @@ import obasify from "@/helpers/obasiFormatter";
 import moment from "moment";
 import DisplayStatus from "@/helpers/statusFormatter";
 
-
 const UserRow = ({ user }) => {
+    
+    let today = new Date();
+    let dateTD;
+
+    if(new Date(user.endDate.date) < today)
+        dateTD = <td>{user.id}</td>;
+
+
+
+    else 
+        dateTD = <td className="text-primary">{user.id}</td>
+
+
     return(
         <tr>  
-            <td>{user.id}</td>
+            {dateTD}
             <td>{user.schoolName}</td>
             <td>{user.firstname}</td>
-            <td>{user.lastname}</td>
+            <td className={`${new Date(user.endDate.date) > today ? "text-primary" : "" }`}>{user.lastname}</td>
             <td>{user.email}</td>
             <td>{user.sectorName}</td>
             <td>{user.newSectionName}</td>

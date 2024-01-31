@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import UserRow from "./userRow";
 
 
@@ -6,10 +6,8 @@ import UserRow from "./userRow";
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
-
-
     useEffect(() => {
-      const headers = { 'Authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDY1MzQ5NzMsImV4cCI6MTcwNjYyMTM3Mywicm9sZXMiOlsiUk9MRV9IT1NQSVRBTF9BRE1JTiJdLCJ1c2VybmFtZSI6ImdlYnJ1aWtlcjEwMUBhbWFuZHVzLmJyb2VkZXJzdmFubGllZmRlLmJlIiwibG9naW5faGFzaCI6IjdhZTZhOWQzMWE2ZGVlYTg4NTgyZDYyYTUyZDgyNzEwZGU4YjEwZWQifQ.EBiH_OV_2_Sjiz29mgx_8rpNL9lx3qBuX9ecoAHA596Ju9lz9bJ3CZ7MBbZUaFYm2vP9nI1gVe2Wu4PQ263B7JfSjhqW1Z39chD0AldRxGFl9Al5Z8DUj5LNeQMuf6C04pXtDxNCx2mpqjMDwDibwgLLrYCH6U2LK1eWLuUlFPeuuds8dqxXv-Ukn_7qGf2wYozdEXHr4qe6tHnEA4JS-cNiPh1xEXaX7vrv-CgcLSCqsE5Kp7sfRQUWgLuVOGjuGNbRZ6qH0E5t3AFTlrDVpTnT6lPLcKMxHPRGTftHiIFSnoi5zVLgGKnnS9uB2T3KNy17sOyKC9LRKL36j4xSGu0o8opci26GbeAgl49a2YCFnxe2WVNwWgiAZm1GulfRBbjdHnYDbVapUTB-t0UjjNW7l-n0EoYqxDOa4vgMBEOt0-mcN5ohTvuontprUuJ1bMe6B_lzB18mseJ1D50onBEvb17AN_G-bD7sVKK_Inl-f0I-dP1pU3pN6TCnHCsSu-cQAIlJ_CCnA3IAoZuayhvtz0UaPQkemg9yN-8frPn0uxXrNerZbNq-4wVinZpK4Dlw28MioBJKRv8FKi5POCRuGEE273pP4jv1X8JKvqxmoC0lPh7peUdKh9RgPxJBECo3UZORToSNDTcD_yHO2_i8SRKzxob6YSAFjCQ0fCI" };
+      const headers = { 'Authorization': "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDY2ODYwOTMsImV4cCI6MTcwNjc3MjQ5Mywicm9sZXMiOlsiUk9MRV9IT1NQSVRBTF9BRE1JTiJdLCJ1c2VybmFtZSI6ImdlYnJ1aWtlcjEwMUBhbWFuZHVzLmJyb2VkZXJzdmFubGllZmRlLmJlIiwibG9naW5faGFzaCI6IjdhZTZhOWQzMWE2ZGVlYTg4NTgyZDYyYTUyZDgyNzEwZGU4YjEwZWQifQ.J3rh5xFBDYGpLgcss7jEBco7diX40UBs3LfKE_C4B-LxXZVGRfsrBtRQSsDphs0wcfCYF9hYDo-ZRUrsjOwuLFsH19nBVTRFjlf1EQ0eBgV-v0rjBRgeg4IpOILVO7KXeSQtz-wyAX5NMO0Vm3xS6jjt-xA3tc8DE4Vg9J0pmAKOrPNuebADRm6Do0TWkMRRdhDl0n7hhgFv1-jMIdVAg60NUzx7TwfqjjFM4NG4uYm9_81EhRj1iJNcaMjqO8JxSP8krc_ASizObQu3gUT21OohVN9kUxRcoA-pctXNc61H7A2BpyP9tgDkgYeqfQBanN_OaeNZ8ok2Yfk2PtsPhBL0rMAH4dJzbhtIFEE--fW4CnbK1W9mv7fx-j68FDDqryz9jxWezQSqUXXwmg4tGfTwbT47J1njgHRk_BH0oiDmcbdpBZ9yVM27EUkMwxNQiLL95L7HdOCy8RzDpRrfMkY-Emo9r7LUSUMHoxVu1-_lACJiFPWBFU1n_4TF2WCON8TMPjNoAq0U_uX7fEG_qQn7H9QOMynOis6sXcLHHx9NbBAk9_Z-2n7z2raGVcl3ebeU09nIpslHSfT7gqTsnD9AA9wlofsQXw6sejAI6-0kNFUV9SWXGS2mVxJ2G5KtToGQSKR8ugKAB269U9JgvATq3Jfap-vsdtfWXTo_4gg" };
       fetch('https://api.interneo.pro/internship/daterange/2023-01-26/2025-01-25?getBadges=true', { headers })
           .then(response => response.json())
           .then(data => {setUsers(data.data)
@@ -17,23 +15,30 @@ const UserList = () => {
           ); 
       }, []);
 
-  
+      let inputSearch = useRef(null);
+      useEffect(() => {
+          inputSearch.current.focus();
+      });
 
+      const[searchUser,setSearchUser] = useState('');
 
       return (
         <div>
-
-           { console.log(users) }
-            {/* { console.log(interns)  }
+        <div className="text-center">
+            <input 
+            type="text" 
+            placeholder="Zoek op email" 
+            className="mb-2 p-1" 
+            ref={inputSearch}
+            onChange={(e)=>setSearchUser(e.target.value)}
+            ></input>
+        </div>
             
-            {interns.map(intern => 
-                (<p key={intern.id}>{intern.email}</p> ))} */}
-            
-            <table className="table table-hover ">
+            <table className="table table-hover">
                 <thead>
                   <tr>
                     <th>Id</th>
-                    <th >School</th>
+                    <th>School</th>
                     <th>Voornaam</th>
                     <th>Familienaam</th>
                     <th>Email</th>
@@ -49,7 +54,21 @@ const UserList = () => {
                 </thead>
                 
             <tbody>
-                {users.map(user => 
+                {users.filter((user) => { 
+                  if (searchUser === "" ) {
+                    return user;
+                  } else if (!user.email)
+                  {
+                    return "";
+                  }
+                  else if (
+                    (user.email)
+                    .toLocaleLowerCase()
+                    .includes(searchUser.toLocaleLowerCase())
+                    ) {
+                      return user;
+                    }
+                }).map(user => 
                 (<UserRow key={user.id} user={user} />))}
             </tbody>
               </table>
