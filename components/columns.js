@@ -1,3 +1,7 @@
+import moment from "moment"
+import { format } from 'date-fns'
+import DisplayStatus from "@/helpers/statusFormatter";
+
 export const COLUMNS = [
     {
         Header: 'id',
@@ -21,6 +25,19 @@ export const COLUMNS = [
         accessor: 'email'
     },
     {
+        Header: 'Startdatum',
+        accessor:  'startDate.date',
+        Cell: ({ value }) => { return format(value, 'dd/MM/yyyy')}
+          
+          
+    },
+    {
+        Header: 'EindDatum',
+        accessor:  'endDate.date',
+        Cell: ({ value }) => { return format(value, 'dd/MM/yyyy')}
+          
+    },
+    {
         Header: 'Afdeling',
         accessor: 'sectorName'
     },
@@ -28,10 +45,7 @@ export const COLUMNS = [
         Header: 'Opleiding',
         accessor: 'newSectionName'
     },
-    {
-        Header: 'Eind',
-        accessor: 'endDate.date'
-    },
+    
     {
         Header: 'Account',
         accessor: 'freefields[0].fieldValue'
@@ -40,12 +54,14 @@ export const COLUMNS = [
         Header: 'Laptop',
         accessor: 'freefields[1].fieldValue'
     },
-    // {
-    //     Header: 'Datum Aangemaakt',
-    //     accessor: 'id'
-    // },
-    // {
-    //     Header: 'Status',
-    //     accessor: 'id'
-    // }
+    {
+        Header: 'Datum Aangemaakt',
+        accessor:  'createdAt.date',
+        Cell: ({ value }) => { return format(value, 'dd/MM/yyyy')}
+    },
+    {
+        Header: 'Status',
+        accessor: 'state',
+        Cell: ({ value }) => { return DisplayStatus(value)}
+    }
 ]

@@ -6,6 +6,7 @@ import Square from "./board";
 import SearchInput from "./searchinput";
 import UserList from "./userList";
 import UserListFilters from "./userListFilters";
+import { SortingTable } from "./SortingTable";
 
 
 
@@ -15,8 +16,8 @@ const App = () => {
 
     return (
     <>
-    <Banner>interneolist</Banner> 
-    <BasicTable></BasicTable>
+    <Banner>Interneo API</Banner> 
+    <SortingTable></SortingTable>
     <About></About>
     </>
     )

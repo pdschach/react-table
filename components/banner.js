@@ -1,7 +1,6 @@
 import {logo} from "./banner.module.css";
 
 const subtitleStyle = {
-    fontStyle: "italic",
     fontSize: "x-large",
     color: "lightseagreen",
     textAlign: "center"

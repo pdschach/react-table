@@ -110,9 +110,10 @@ tr {
   table td, #table th {
     border: 1px solid #ddd;
     padding: 8px;
+    text-align: center;
   }
   
-  table tr:nth-child(even){background-color: #f2f2f2;}
+  table tr:nth-child(even){background-color: #e8eaf6;}
   
   table tr:hover {background-color: #ddd;}
   
@@ -120,7 +121,7 @@ tr {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #04AA6D;
+    background-color: #7cbeb8;
     color: white;
   }
   
